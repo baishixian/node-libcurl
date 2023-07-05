@@ -132,6 +132,9 @@ echo "Building libunistring v$LIBUNISTRING_RELEASE"
 export LIBUNISTRING_BUILD_FOLDER=$LIBUNISTRING_DEST_FOLDER/build/$LIBUNISTRING_RELEASE
 ls -al $LIBUNISTRING_BUILD_FOLDER/lib
 
+mkdir -p $LOGS_FOLDER/$LIBUNISTRING_BUILD_FOLDER
+cp -r $LIBUNISTRING_BUILD_FOLDER/lib $LOGS_FOLDER/$LIBUNISTRING_BUILD_FOLDER
+
 ###################
 # Build libidn2
 ###################
@@ -140,6 +143,9 @@ LIBIDN2_DEST_FOLDER=$PREFIX_DIR/deps/libidn2
 ./scripts/ci/build-libidn2.sh $LIBIDN2_RELEASE $LIBIDN2_DEST_FOLDER >$LOGS_FOLDER/build-libidn2.log 2>&1
 export LIBIDN2_BUILD_FOLDER=$LIBIDN2_DEST_FOLDER/build/$LIBIDN2_RELEASE
 ls -al $LIBIDN2_BUILD_FOLDER/lib
+
+mkdir -p $LOGS_FOLDER/$LIBIDN2_BUILD_FOLDER
+cp -r $LIBIDN2_BUILD_FOLDER/lib $LOGS_FOLDER/$LIBIDN2_BUILD_FOLDER
 
 ###################
 # Build OpenSSL
@@ -166,6 +172,9 @@ export OPENSSL_BUILD_FOLDER=$OPENSSL_DEST_FOLDER/build/$OPENSSL_RELEASE
 ls -al $OPENSSL_BUILD_FOLDER/lib*
 unset KERNEL_BITS
 
+mkdir -p $LOGS_FOLDER/$OPENSSL_BUILD_FOLDER
+cp -r $OPENSSL_BUILD_FOLDER/lib $LOGS_FOLDER/$OPENSSL_BUILD_FOLDER
+
 ###################
 # Build nghttp2
 ###################
@@ -176,6 +185,9 @@ echo "Building nghttp2 v$NGHTTP2_RELEASE"
 ./scripts/ci/build-nghttp2.sh $NGHTTP2_RELEASE $NGHTTP2_DEST_FOLDER >$LOGS_FOLDER/build-nghttp2.log 2>&1
 export NGHTTP2_BUILD_FOLDER=$NGHTTP2_DEST_FOLDER/build/$NGHTTP2_RELEASE
 ls -al $NGHTTP2_BUILD_FOLDER/lib
+
+mkdir -p $LOGS_FOLDER/$NGHTTP2_BUILD_FOLDER
+cp -r $NGHTTP2_BUILD_FOLDER/lib $LOGS_FOLDER/$NGHTTP2_BUILD_FOLDER
 
 ###################
 # Build GSS API Lib
@@ -194,6 +206,9 @@ if [ "$HAS_GSS_API" == "1" ]; then
     ./scripts/ci/build-kerberos.sh $KERBEROS_RELEASE $KERBEROS_DEST_FOLDER >$LOGS_FOLDER/build-kerberos.log 2>&1
     export KERBEROS_BUILD_FOLDER=$KERBEROS_DEST_FOLDER/build/$KERBEROS_RELEASE
     ls -al $KERBEROS_BUILD_FOLDER/lib
+    mkdir -p $LOGS_FOLDER/$KERBEROS_BUILD_FOLDER
+    cp -r $KERBEROS_BUILD_FOLDER/lib $LOGS_FOLDER/$KERBEROS_BUILD_FOLDER
+
 
   elif [ "$GSS_LIBRARY" == "heimdal" ]; then
 
@@ -207,6 +222,9 @@ if [ "$HAS_GSS_API" == "1" ]; then
     export NCURSES_BUILD_FOLDER=$NCURSES_DEST_FOLDER/build/$NCURSES_RELEASE
     ls -al $NCURSES_BUILD_FOLDER/lib
 
+    mkdir -p $LOGS_FOLDER/$NCURSES_BUILD_FOLDER
+    cp -r $NCURSES_BUILD_FOLDER/lib $LOGS_FOLDER/$NCURSES_BUILD_FOLDER
+
     ###################
     # Build heimdal
     ###################
@@ -216,6 +234,9 @@ if [ "$HAS_GSS_API" == "1" ]; then
     ./scripts/ci/build-heimdal.sh $HEIMDAL_RELEASE $HEIMDAL_DEST_FOLDER >$LOGS_FOLDER/build-heimdal.log 2>&1
     export HEIMDAL_BUILD_FOLDER=$HEIMDAL_DEST_FOLDER/build/$HEIMDAL_RELEASE
     ls -al $HEIMDAL_BUILD_FOLDER/lib
+
+    mkdir -p $LOGS_FOLDER/$HEIMDAL_BUILD_FOLDER
+    cp -r $HEIMDAL_BUILD_FOLDER/lib $LOGS_FOLDER/$HEIMDAL_BUILD_FOLDER
   fi
 fi
 
@@ -233,6 +254,9 @@ echo "Building brotli v$BROTLI_RELEASE"
 export BROTLI_BUILD_FOLDER=$BROTLI_DEST_FOLDER/build/$BROTLI_RELEASE
 ls -al $BROTLI_BUILD_FOLDER/lib
 
+mkdir -p $LOGS_FOLDER/$BROTLI_BUILD_FOLDER
+cp -r $BROTLI_BUILD_FOLDER/lib $LOGS_FOLDER/$BROTLI_BUILD_FOLDER
+
 ###################
 # Build zlib
 ###################
@@ -243,6 +267,9 @@ echo "Building zlib v$ZLIB_RELEASE"
 ./scripts/ci/build-zlib.sh $ZLIB_RELEASE $ZLIB_DEST_FOLDER >$LOGS_FOLDER/build-zlib.log 2>&1
 export ZLIB_BUILD_FOLDER=$ZLIB_DEST_FOLDER/build/$ZLIB_RELEASE
 ls -al $ZLIB_BUILD_FOLDER/lib
+
+mkdir -p $LOGS_FOLDER/$ZLIB_BUILD_FOLDER
+cp -r $ZLIB_BUILD_FOLDER/lib $LOGS_FOLDER/$ZLIB_BUILD_FOLDER
 
 ###################
 # Build zstd
@@ -255,6 +282,9 @@ echo "Building zstd v$ZSTD_RELEASE"
 export ZSTD_BUILD_FOLDER=$ZSTD_DEST_FOLDER/build/$ZSTD_RELEASE
 ls -al $ZSTD_BUILD_FOLDER/lib
 
+mkdir -p $LOGS_FOLDER/$ZSTD_BUILD_FOLDER
+cp -r $ZSTD_BUILD_FOLDER/lib $LOGS_FOLDER/$ZSTD_BUILD_FOLDER
+
 ###################
 # Build libssh2
 ###################
@@ -265,6 +295,9 @@ echo "Building libssh2 v$LIBSSH2_RELEASE"
 export LIBSSH2_BUILD_FOLDER=$LIBSSH2_DEST_FOLDER/build/$LIBSSH2_RELEASE
 ls -al $LIBSSH2_BUILD_FOLDER/lib
 
+mkdir -p $LOGS_FOLDER/$LIBSSH2_BUILD_FOLDER
+cp -r $LIBSSH2_BUILD_FOLDER/lib $LOGS_FOLDER/$LIBSSH2_BUILD_FOLDER
+
 ###################
 # Build openldap
 ###################
@@ -274,6 +307,9 @@ echo "Building openldap v$OPENLDAP_RELEASE"
 ./scripts/ci/build-openldap.sh $OPENLDAP_RELEASE $OPENLDAP_DEST_FOLDER >$LOGS_FOLDER/build-openldap.log 2>&1
 export OPENLDAP_BUILD_FOLDER=$OPENLDAP_DEST_FOLDER/build/$OPENLDAP_RELEASE
 ls -al $OPENLDAP_BUILD_FOLDER/lib
+
+mkdir -p $LOGS_FOLDER/$OPENLDAP_BUILD_FOLDER
+cp -r $OPENLDAP_BUILD_FOLDER/lib $LOGS_FOLDER/$OPENLDAP_BUILD_FOLDER
 
 ###################
 # Build libcurl
@@ -294,6 +330,10 @@ export LIBCURL_BUILD_FOLDER=$LIBCURL_DEST_FOLDER/build/$LIBCURL_RELEASE
 ls -al $LIBCURL_BUILD_FOLDER/lib
 export PATH=$LIBCURL_DEST_FOLDER/build/$LIBCURL_RELEASE/bin:$PATH
 export LIBCURL_RELEASE=$LIBCURL_RELEASE
+
+mkdir -p $LOGS_FOLDER/$LIBCURL_BUILD_FOLDER
+cp -r $LIBCURL_BUILD_FOLDER/lib $LOGS_FOLDER/$LIBCURL_BUILD_FOLDER
+cp -r $LIBCURL_BUILD_FOLDER/build/$LIBCURL_RELEASE $LOGS_FOLDER/$LIBCURL_BUILD_FOLDER
 
 curl --version
 curl-config --version
